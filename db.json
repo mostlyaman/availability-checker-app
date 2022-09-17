@@ -1,4 +1,34 @@
 {
-    "client": {},
-    "expert": {}
+  "client": {},
+  "expert": [
+    {
+      "id": "Expert 1",
+      "name": "Expert 1",
+      "workingHours": [
+        [
+          10,
+          0
+        ],
+        [
+          17,
+          0
+        ]
+      ],
+      "sessions": [
+        {
+          "client": "Aman",
+          "time": [
+            [
+              10,
+              43
+            ],
+            [
+              11,
+              30
+            ]
+          ]
+        }
+      ]
+    }
+  ]
 }
