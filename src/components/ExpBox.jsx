@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-
 function renderMins(mins) {
     return (mins < 10 ? "0" + mins.toString() : mins)
 }
+
 
 function calculateSlots(data) {
     const startTime = data.workingHours[0][0] * 60 + data.workingHours[0][1]
@@ -87,11 +87,14 @@ function ExpBox({ index, data, name }) {
                 <div className="slot-timings-heading mb-3">
                     Slots Available:
                 </div>
+                <div className={calculateSlots(data).length ? "hidden" : ""}>
+                    This expert is completely booked.
+                </div>
                 <div className="flex">
                     {
                         calculateSlots(data).map((timeSlot) => {
                             return (
-                                <div key={timeSlot[0]} className="time-slot bg-sky-400 w-fit text-white rounded-lg p-2 mx-2 my-1" onClick={(e) => { setShowForm(!showForm); setFormTime(timeSlot); setBookTime(timeSlot) }}>
+                                <div key={timeSlot[0]} className="time-slot bg-sky-400 w-fit text-white rounded-lg p-2 mx-2 my-1 hover:cursor-pointer" onClick={(e) => { setShowForm(!showForm); setFormTime(timeSlot); setBookTime(timeSlot) }}>
                                     {convertToTime(timeSlot[0])}-{convertToTime(timeSlot[1])}
                                 </div>
                             )

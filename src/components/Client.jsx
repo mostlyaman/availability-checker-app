@@ -7,11 +7,13 @@ function Client() {
 
 
     const expert = useLoaderData()
-    console.log(expert)
     const { name } = useParams()
     return (
-        <div className="w-[90vw] text-center mx-auto flex flex-col">
+        <div className="w-[90vw] text-center mx-auto flex flex-col mb-[100px]">
             <Header name={name}></Header>
+            <div className={expert.length == 0 ? "mt-10" : "hidden"}>
+                What? There are no experts available at this moment. 😢
+            </div>
             <div className="experts w-[50%] mx-auto text-center mt-10">
                 {
                     Object.keys(expert).map((key, index) => {

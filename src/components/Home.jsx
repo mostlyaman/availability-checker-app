@@ -1,12 +1,20 @@
 import Header from './Header'
 import './css/Home.css'
 import { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
+import axios from 'axios'
 
 function Home() {
 
 
   const [name, setName] = useState("")
+  // Creating a list of all experts
+  const expert = useLoaderData()
+
+  let experts = []
+  for (let i = 0; i < expert.length; i++) {
+    experts.push(expert[i].name)
+  }
 
 
   return (
@@ -27,7 +35,7 @@ function Home() {
           <Link to={`/client/${name}`} className={name == "" ? "pointer-events-none bg-gray-400 px-[20px] py-[15px] m-[10px] rounded-[10px]" : "pointer-events-auto"}>
             Client
           </Link >
-          <Link to={`/expert/${name}`} className={name == "" ? "pointer-events-none bg-gray-400 px-[20px] py-[15px] m-[10px] rounded-[10px]" : "pointer-events-auto"} >
+          <Link to={experts.includes(name) ? `/expert/${name}` : `/create-expert/${name}`} className={name == "" ? "pointer-events-none bg-gray-400 px-[20px] py-[15px] m-[10px] rounded-[10px]" : "pointer-events-auto"} >
             Expert
           </Link>
         </div>
